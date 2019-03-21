@@ -118,7 +118,7 @@ CONFIG_PLATFORM_ARM_TCC8920_JB42 = n
 CONFIG_PLATFORM_ARM_TCC8930_JB42 = n
 CONFIG_PLATFORM_ARM_RK2818 = n
 CONFIG_PLATFORM_ARM_RK3066 = n
-CONFIG_PLATFORM_ARM_RK3188 = y
+CONFIG_PLATFORM_ARM_RK3188 = n
 CONFIG_PLATFORM_ARM_URBETTER = n
 CONFIG_PLATFORM_ARM_TI_PANDA = n
 CONFIG_PLATFORM_MIPS_JZ4760 = n
@@ -154,7 +154,9 @@ ifeq ($(CONFIG_PLATFORM_ANDROID_X86_N70), y)
 export TopDIR := $(shell pwd)/../../../../../../kernel/drivers/net/wireless/rtl8188ee/
 endif
 
-export TopDIR ?= $(shell pwd)/drivers/net/wireless/rockchip_wlan/rtl8188eu/
+ifdef PROJECT_DIR
+  TopDIR ?= $(PROJECT_DIR)
+endif
 
 ########### COMMON  #################################
 ifeq ($(CONFIG_GSPI_HCI), y)
